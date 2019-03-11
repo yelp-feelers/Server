@@ -4,25 +4,26 @@ const getReviewerById = (id) => {
     return db('reviewers').where({id}).first();
 }
 
-const getReviewerByUser = (filter) => {
-    return db('reviewers').where(filter);
+const getReviewerByUserName = (username) => {
+    return db('reviewers').where({username: username}).first();
 }
 
 const normalizeReviewer = (reviewer) => {
     return {
         id: reviewer.id,
-        username: reviewer.usernanme
+        username: reviewer.username
     }
 }
 
-const addReviewer = (newReviewer) => {
-    const [id] = db('reviewers').insert(newReviewer);
-    const fetchedReviewer = getReviewerById(id);
+const addReviewer = async (newReviewer) => {
+    const [id] = await db('reviewers').insert(newReviewer);
+    const fetchedReviewer = await getReviewerById(id);
     return normalizeReviewer(fetchedReviewer);
 }
 
+
 module.exports = {
-    getReviewerByUser,
+    getReviewerByUserName,
     getReviewerById,
     addReviewer
 }
