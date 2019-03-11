@@ -4,6 +4,10 @@ const getReviewerById = (id) => {
     return db('reviewers').where({id}).first();
 }
 
+const getReviewerByUser = (filter) => {
+    return db('reviewers').where(filter);
+}
+
 const normalizeReviewer = (reviewer) => {
     return {
         id: reviewer.id,
@@ -18,6 +22,7 @@ const addReviewer = (newReviewer) => {
 }
 
 module.exports = {
+    getReviewerByUser,
     getReviewerById,
     addReviewer
 }
