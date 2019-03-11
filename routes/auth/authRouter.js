@@ -11,12 +11,12 @@ router.post('/signup', (req, res) => {
     user.password = hash;
 
     Users
-        .insert(user)
+        .addReviewer(user)
         .then(saved => {
             res.status(201).json(saved);
         })
         .catch(err => 
-            res.status(400).json(error)
+            res.status(400).json(err)
         );
 });
 
@@ -24,7 +24,6 @@ router.post('/signup', (req, res) => {
 router.post('/login', (req, res) => {
     let { username, password } = req.body;
 
-    // assuming a findBy() will be included in usersModel - else change name to reflect correct fn
     Users.getReviewerByUser({ username })
         .first()
         .then(user => {
