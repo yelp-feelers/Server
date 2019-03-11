@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const secret = 'Update to dotenv secret';
+const secret = require('../../config/secrets');
 
 module.exports = {
     createToken,
