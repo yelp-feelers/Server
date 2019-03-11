@@ -16,5 +16,5 @@ function createToken(user){
         expiresIn: '1d'
     };
 
-    return jwt.sign(payload, secret, options);
+    return jwt.sign(payload, secret.jwtSecret, options);
 }

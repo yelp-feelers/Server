@@ -2,22 +2,21 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 
 const tokenFunctions = require('./tokenFunctions.js');
-// Users will call users db after its creation
-const Users = require('');
+const Users = require('../../data/helpers/usersModel');
 
 // Signup endpoint === `/api/auth/signup`
 router.post('/signup', (req, res) => {
-    let user = req.bodt;
+    let user = req.body;
     const hash = bcrypt.hashSync(user.password, 14);
     user.password = hash;
 
     Users
-        .insert(user)
+        .addReviewer(user)
         .then(saved => {
             res.status(201).json(saved);
         })
         .catch(err => 
-            res.status(400).json(error)
+            res.status(400).json(err)
         );
 });
 
@@ -25,8 +24,7 @@ router.post('/signup', (req, res) => {
 router.post('/login', (req, res) => {
     let { username, password } = req.body;
 
-    // assuming a findBy() will be included in usersModel - else change name to reflect correct fn
-    Users.findBy({ username })
+    Users.getReviewerByUser({ username })
         .first()
         .then(user => {
             if(user && bcrypt.compareSync(password, user.password)) {

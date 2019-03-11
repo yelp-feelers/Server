@@ -2,6 +2,9 @@ const express = require('express');
 const helmet = require('helmet');
 const server = express();
 
+// Route Imports
+const authRouter = require('./routes/auth/authRouter');
+
 
 server.use(helmet())
 server.use(express.json())
@@ -18,6 +21,7 @@ server.use((req, res, next) => {
     next();
 })
 //==============================================================// ROUTES
+server.use('/api/auth', authRouter);
 
 const PORT = process.env.PORT || '4200';
 server.listen(PORT, () => {console.log(`Listening on port ${PORT}...`)})
