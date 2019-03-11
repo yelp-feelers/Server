@@ -2,8 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 
 const tokenFunctions = require('./tokenFunctions.js');
-// Users will call users db after its creation
-const Users = require('');
+const Users = require('../../data/helpers/usersModel');
 
 // Signup endpoint === `/api/auth/signup`
 router.post('/signup', (req, res) => {
