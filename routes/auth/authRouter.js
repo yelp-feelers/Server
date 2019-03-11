@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 
+const tokenFunctions = require('./tokenFunctions.js');
 // Users will call users db after its creation
 const Users = require('');
 
