@@ -19,6 +19,7 @@ router.get('/restaurants', async (_, res) => {
 
 // Gets reviews for specific restaurants
 router.get('/restaurants/:id/reviews', async (req, res) => {
+    const { id } = req.params;
     try {
         const reviewList = await Restaurants.getReviewsWithRestaurant(id);
         if (reviewList.length) {
