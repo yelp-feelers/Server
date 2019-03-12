@@ -1,11 +1,5 @@
 const db = require('../dbConfig');
 
-module.exports = {
-    getRestaurantById,
-    getAllRestaurants,
-    getReviewsWithRestaurant,
-};
-
 const getRestaurantById = (id) => {
     return db('restaurants').where({id}).first();
 }
@@ -44,3 +38,10 @@ const getReviewsWithRestaurant = async (id) => {
     const transformedReviews = normalizeReviews(reviews)
     return transformedReviews
 }
+
+
+module.exports = {
+    getRestaurantById,
+    getAllRestaurants,
+    getReviewsWithRestaurant,
+};
