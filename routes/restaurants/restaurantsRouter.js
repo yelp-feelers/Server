@@ -22,7 +22,7 @@ router.get('/restaurants/:id/reviews', async (req, res) => {
     const { id } = req.params;
     try {
         const reviewList = await Restaurants.getReviewsWithRestaurant(id);
-        if (reviewList.length) {
+        if (reviewList) {
             res.status(200).json(reviewList);
         } else {
             res.status(404).json({ msg: 'No reviews available' });
