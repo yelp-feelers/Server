@@ -4,6 +4,7 @@ const server = express();
 
 // Route Imports
 const authRouter = require('./routes/auth/authRouter');
+const restaurantRouter = require('./routes/restaurants/restaurantsRouter');
 
 
 server.use(helmet())
@@ -22,6 +23,7 @@ server.use((req, res, next) => {
 })
 //==============================================================// ROUTES
 server.use('/api/auth', authRouter);
+server.use('/api', restaurantRouter);
 
 const PORT = process.env.PORT || '4200';
 server.listen(PORT, () => {console.log(`Listening on port ${PORT}...`)})
