@@ -10,6 +10,12 @@ exports.up = function(knex, Promise) {
         tbl
             .string('description')
             .notNullable();
+        tbl
+            .integer('true_score')
+            .notNullable();
+        tbl
+            .integer('adju_score')
+            .notNullable();
     })
   
 };

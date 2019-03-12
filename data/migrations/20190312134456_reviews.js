@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
             .increments()
             .notNullable();
         tbl
-            .string('reviewText')
+            .string('reviewText', 255)
             .notNullable();
         tbl
             .integer('restaurant_id')
@@ -14,6 +14,17 @@ exports.up = function(knex, Promise) {
             .inTable('restaurants')
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
+        tbl
+            .integer('reviewer_id')
+            .unsigned()
+            .notNullable()
+            .references('id').inTable('reviewers')
+            .onDelete('CASCADE').onUpdate('CASCADE');
+        tbl
+            .integer('score')
+            .notNullable();
+        tbl
+            .timestamps()
     })
   
 };

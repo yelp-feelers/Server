@@ -5,11 +5,14 @@ exports.seed = function(knex, Promise) {
   return knex('reviews').del()
     .then(function () {
       const reviews = [];
-      for (let i = 1; i < 125; i++){
-        const restaurantId = Math.floor(Math.random() * 23 + 1)
+      for (let i = 1; i < 130; i++){
+        const restaurantId = Math.floor(Math.random() * 12 + 1)
+        let numOfWords = Math.floor(Math.random() * 125 + 50)
         let newReview = {
-          reviewText: faker.lorem.paragraph(sentenceCount[3]),
-          restaurant_id: restaurantId
+          reviewText: faker.lorem.words(numOfWords),
+          restaurant_id: restaurantId,
+          reviewer_id: Math.floor(Math.random()*10 + 1),
+          score: Math.floor(Math.random() * 6)
         }
         reviews.push(newReview);
       }

@@ -4,11 +4,13 @@ exports.seed = function(knex, Promise) {
   return knex('restaurants').del()
     .then(function () {
       const restaurants = [];
-      for (let i = 1; i < 25; i++) {
+      for (let i = 1; i < 13; i++) {
         let numOfWords = Math.floor(Math.random() * 10 + 10)
         let newRestaurant = {
           name: faker.company.companyName(),
           description: faker.lorem.words(numOfWords),
+          true_score: Math.floor(Math.random() * 6),
+          adju_score: Math.floor(Math.random() * 6)
         }
         restaurants.push(newRestaurant)
       }
