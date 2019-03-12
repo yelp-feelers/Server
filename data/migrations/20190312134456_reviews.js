@@ -7,6 +7,13 @@ exports.up = function(knex, Promise) {
         tbl
             .string('reviewText')
             .notNullable();
+        tbl
+            .integer('restaurant_id')
+            .unsigned()
+            .references('id')
+            .inTable('restaurants')
+            .onDelete('CASCADE')
+            .onUpdate('CASCADE');
     })
   
 };
