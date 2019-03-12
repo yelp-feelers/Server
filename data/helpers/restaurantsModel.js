@@ -2,7 +2,8 @@ const db = require('../dbConfig');
 
 module.exports = {
     getRestaurantById,
-    getAllRestaurants
+    getAllRestaurants,
+    getReviewsWithRestaurant,
 };
 
 const getRestaurantById = (id) => {
