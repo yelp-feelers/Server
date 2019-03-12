@@ -1,18 +1,19 @@
+
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable('reviewers', function(tbl) {
+    return knex.schema.createTable('restaurants', function(tbl){
         tbl
             .increments()
             .notNullable();
         tbl
-            .string('username', 156)
-            .unique()
+            .string('name', 255)
             .notNullable();
         tbl
-            .string('hash', 255)
+            .string('description')
             .notNullable();
     })
+  
 };
 
 exports.down = function(knex, Promise) {
-    return knex.schema.dropTableIfExists('reviewers');
+    return knex.schema.dropTableIfExists('restaurants');
 };
