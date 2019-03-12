@@ -19,7 +19,7 @@ const normalizeReview = (review) => {
     return {
         id: review.id,
         reviewer: { id: review.reviewer_id, username: review.username },
-        review: review.review,
+        reviewText: review.review,
         score: review.score,
         adju_score: 5
     }
@@ -29,6 +29,7 @@ const normalizeReviews = (reviews) => {
     return {
         id: reviews[0].restaurant_id,
         name: reviews[0].name,
+        description: reviews[0].description,
         true_score: reviews[0].true_score,
         adju_score: reviews[0].adju_score,
         reviews: reviews.map(normalizeReview)
