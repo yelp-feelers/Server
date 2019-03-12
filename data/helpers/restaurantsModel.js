@@ -32,7 +32,7 @@ const normalizeReviews = (reviews) => {
 }
 
 const getReviewsWithRestaurant = async (id) => {
-    const reviews =  await db('restaurants as r')
+    const reviews = await db('restaurants as r')
                             .where({'r.id': id})
                             .join('reviews as rr', {'r.id':'rr.restaurant_id'})
                             .join('reviewers as rrr', {'rrr.id' : 'rr.reviewer_id'})
