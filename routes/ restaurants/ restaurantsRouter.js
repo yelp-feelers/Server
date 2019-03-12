@@ -16,6 +16,20 @@ router.get('/restaurants', async (_, res) => {
     }
 })
 
+router.get('/restaurants/:id/reviews', async (req, res) => {
+    try {
+        const reviewList = await db('reviews')
+            .where({ restaurant_id: req.paramds.id});
+        if (reviewList.length) {
+            res.status(200).json(reviewList);
+        } else {
+            res.status(404).json({ msg: 'No reviews available' });
+        }
+    } catch(err) {
+        res.sendStatus(500);
+    }
+})
+
 
 
 
