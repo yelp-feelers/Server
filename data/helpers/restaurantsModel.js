@@ -16,7 +16,8 @@ const normalizeReview = (review) => {
         reviewer: { id: review.reviewer_id, username: review.username },
         review: review.reviewText,
         score: review.score,
-        adju_score: 5
+        adju_score: 5,
+        created_at: `${new Date(review.created_at).toLocaleDateString()}`
     }
 }
 
