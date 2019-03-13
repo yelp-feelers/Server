@@ -11,7 +11,6 @@ const getAllRestaurants = () => {
 // Added by Orlando
 
 const normalizeReview = (review) => {
-    console.log(review)
     return {
         id: review.id,
         reviewer: { id: review.reviewer_id, username: review.username },
