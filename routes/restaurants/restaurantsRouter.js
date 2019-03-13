@@ -20,6 +20,9 @@ router.get('/restaurants', async (_, res) => {
 // Gets reviews for specific restaurants
 router.get('/restaurants/:id/reviews', async (req, res) => {
     const { id } = req.params;
+    if(Number.isNaN(+id)) {
+        return res.status(404).json({errorMessage: 'id must be of type number.'})
+    }
     try {
         const reviewList = await Restaurants.getReviewsWithRestaurant(id);
         if (reviewList) {

@@ -5,7 +5,7 @@ const getRestaurantById = (id) => {
 }
 
 const getAllRestaurants = () => {
-    return db('restaurants').select('name', 'description');
+    return db('restaurants');
 }
 
 // Added by Orlando
