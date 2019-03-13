@@ -12,7 +12,8 @@ exports.seed = function(knex, Promise) {
           reviewText: faker.lorem.words(numOfWords),
           restaurant_id: restaurantId,
           reviewer_id: Math.floor(Math.random()*10 + 1),
-          score: Math.floor(Math.random() * 6)
+          score: Math.floor(Math.random() * 6),
+          created_at: new Date(Date.now() - ( Math.floor(Math.random() * 80 + 1 ) * 1000000000 ) )
         }
         reviews.push(newReview);
       }
