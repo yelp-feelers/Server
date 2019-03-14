@@ -23,6 +23,10 @@ router.get('/restaurants/:id/reviews', async (req, res) => {
     if(Number.isNaN(+id)) {
         return res.status(404).json({errorMessage: 'id must be of type number.'})
     }
+    const restaurantExists = await Restaurants.getRestaurantById(+id);
+    if (!restaurantExists) {
+        return res.status(404).json({errorMessage: 'Store with that id does not exist'})
+    }
     try {
         const reviewList = await Restaurants.getReviewsWithRestaurant(id);
         if (reviewList) {
