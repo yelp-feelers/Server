@@ -1,7 +1,8 @@
 const express = require('express');
 const helmet = require('helmet');
 const server = express();
-
+var dotenv = require('dotenv');
+dotenv.config();
 // Route Imports
 const authRouter = require('./routes/auth/authRouter');
 const restaurantRouter = require('./routes/restaurants/restaurantsRouter');
