@@ -12,7 +12,7 @@ const getAllRestaurants = () => {
 
 const normalizeReview = (review) => {
     return {
-        id: review.id,
+        id: review.review_id,
         reviewer: { id: review.reviewer_id, username: review.username },
         review: review.reviewText,
         score: review.score,
@@ -35,8 +35,9 @@ const normalizeReviews = (reviews) => {
 const getReviewsWithRestaurant = async (id) => {
     const reviews = await db('restaurants as r')
                             .where({'r.id': id})
-                            .join('reviews as rr', {'r.id':'rr.restaurant_id'})
-                            .join('reviewers as rrr', {'rrr.id' : 'rr.reviewer_id'})
+                            .join('reviews as rv', {'r.id':'rv.restaurant_id'})
+                            .join('reviewers as rvr', {'rv.reviewer_id' : 'rvr.id'})
+                            .select('rvr.username', 'rvr.id as reviewer_id', 'rv.id as review_id', 'rv.restaurant_id', 'r.name', 'r.description', 'r.true_score', 'r.adju_score', 'rv.reviewText', 'rv.score', 'rv.created_at')
     const transformedReviews = normalizeReviews(reviews)
     return transformedReviews
 }
