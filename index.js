@@ -1,6 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 const server = express();
+require('dotenv').config();
 
 // Route Imports
 const authRouter = require('./routes/auth/authRouter');
